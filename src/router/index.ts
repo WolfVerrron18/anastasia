@@ -1,4 +1,5 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
+// @ts-ignore
 import HomeView from '@/views/HomeView.vue'
 
 const router = createRouter({
@@ -12,6 +13,7 @@ const router = createRouter({
     {
       path: '/about',
       name: 'about',
+      // @ts-ignore
       component: () => import('@/views/AboutView.vue'),
     },
   ],
