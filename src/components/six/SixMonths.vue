@@ -23,7 +23,7 @@
         <div class="six-months-number__wrapper">5</div>
       </div>
       <div id="six-number" class="six-months-number" @click="clickFakeSix">
-        <div class="six-months-number__wrapper">
+        <div ref="sixNumber" class="six-months-number__wrapper">
           <FakeSix :active-step="clickCount" />
         </div>
       </div>
@@ -47,7 +47,7 @@
       <span></span>
     </div>
 
-    <router-link v-if="clickCount >= 5" class="six-months__button" to="/about">
+    <router-link v-if="clickCount >= 5" class="six-months__button" to="/five-letters">
       Идём дальше
     </router-link>
   </div>
@@ -78,6 +78,8 @@ const messages = [
 ]
 
 const clickCount = ref(-1)
+
+const sixNumber = ref(null)
 
 const updateMessage = () => {
   overlay.value = true
@@ -116,6 +118,14 @@ const updateMessage = () => {
 }
 
 const clickFakeSix = () => {
+  gsap.to(sixNumber.value, {
+    duration: 1,
+    background: 'linear-gradient(90deg, #e74c3c, #f1c40f)',
+    ease: 'power2.inOut',
+    yoyo: true,
+    repeat: 1,
+  })
+
   clickCount.value++
 
   updateMessage()
@@ -125,6 +135,7 @@ const clickFakeSix = () => {
 <style scoped lang="scss">
 .six-months {
   display: grid;
+  padding: 20px;
   gap: 16px;
 
   &__title {

@@ -3,8 +3,23 @@
 #app {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
   font-weight: normal;
+}
+
+a {
+  background: #3389ff;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  transition: all 0.25s ease-in-out;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+a:active {
+  background: #006bff;
 }
 
 

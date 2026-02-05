@@ -15,6 +15,7 @@
         :disabled="gameOver || Math.floor(index / COLS) !== activeIndex"
         @input="onCharUpdated($event, index)"
         @keydown.enter.prevent="onEnter"
+        @keydown.delete.prevent="onBackSpace(index)"
       />
     </div>
 
@@ -94,7 +95,13 @@ const onCharUpdated = (event, index) => {
     nextTick(() => {
       inputRefs.value[index + 1]?.focus()
     })
-  } else if (!letters.value[index] && index > 0) {
+  }
+}
+
+const onBackSpace = (index) => {
+  letters.value[index] = ''
+
+  if (!letters.value[index] && index > 0) {
     nextTick(() => {
       inputRefs.value[index - 1]?.focus()
     })

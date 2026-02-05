@@ -16,6 +16,12 @@ const router = createRouter({
       // @ts-ignore
       component: () => import('@/views/AboutView.vue'),
     },
+    {
+      path: '/five-letters',
+      name: 'five-letters',
+      // @ts-ignore
+      component: () => import('@/views/FiveLettersView.vue'),
+    },
   ],
 })
 
