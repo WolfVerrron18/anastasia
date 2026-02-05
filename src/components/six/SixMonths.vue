@@ -47,9 +47,7 @@
       <span></span>
     </div>
 
-    <router-link v-if="clickCount >= 5" class="six-months__button" to="/five-letters">
-      Идём дальше
-    </router-link>
+    <ButtonLink :visible="clickCount >= 5" to="/five-letters-view" />
   </div>
 </template>
 
@@ -63,6 +61,7 @@ gsap.registerPlugin(Flip)
 gsap.registerPlugin(TextPlugin)
 
 import FakeSix from '@/components/six/FakeSix.vue'
+import ButtonLink from '@/components/ButtonLink.vue'
 
 const keyboardRef = ref(null)
 const messageRef = ref(null)

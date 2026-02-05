@@ -8,7 +8,7 @@
       </div>
     </div>
 
-    <router-link to="/about"> Идём дальше </router-link>
+    <ButtonLink :visible="visibleButton" to="/five-letters" text="Сейчас как угадаю!" />
   </div>
 </template>
 
@@ -16,8 +16,10 @@
 import { onMounted, ref } from 'vue'
 
 import { gsap } from 'gsap'
+import ButtonLink from '@/components/ButtonLink.vue'
 
 const wordsRef = ref(null)
+const visibleButton = ref(false)
 
 const russianWords5 = [
   'автор',
@@ -143,6 +145,8 @@ onMounted(() => {
     tl.set(el, { opacity: 1, scale: 1.5 }) // мгновенно показываем слово и чуть увеличиваем
       .to(el, { opacity: 0, scale: 1, duration: 0.075, ease: 'none' }) // мгновенно скрываем
   })
+
+  visibleButton.value = true
 })
 </script>
 

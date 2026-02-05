@@ -19,7 +19,7 @@
       />
     </div>
 
-    <router-link v-if="gameOver" class="five-letters__button" to="/"> Идём дальше </router-link>
+    <ButtonLink :visible="gameOver" to="/end" text="Угадала, что же дальше?" />
   </div>
 </template>
 
@@ -27,6 +27,7 @@
 import { computed, nextTick, ref } from 'vue'
 
 import { gsap } from 'gsap'
+import ButtonLink from '@/components/ButtonLink.vue'
 
 const secretWord = ref('настя')
 
@@ -219,18 +220,6 @@ const showMessage = (text) => {
 
     // анимация появления
     gsap.to(messageRef.value, { y: 0, opacity: 1, scale: 1, duration: 0.5, ease: 'back.out(1.7)' })
-
-    // через 1.5 сек анимация исчезновения
-    // gsap.to(messageRef.value, {
-    //   y: -20,
-    //   opacity: 0,
-    //   scale: 0.8,
-    //   duration: 0.5,
-    //   delay: 1.5,
-    //   onComplete: () => {
-    //     messageVisible.value = false
-    //   },
-    // })
   })
 }
 </script>
@@ -247,13 +236,14 @@ const showMessage = (text) => {
 
   &__grid {
     display: grid;
-    grid-template-columns: repeat(5, 40px);
-    gap: 20px;
+    grid-template-columns: repeat(5, minmax(40px, 1fr));
+    grid-auto-rows: minmax(40px, 1fr);
+    grid-auto-flow: row;
+    gap: 10px;
+    padding: 10px;
   }
 
   &__char {
-    height: 40px;
-    width: 40px;
     font-size: 20px;
     text-align: center;
     border-radius: 6px;
