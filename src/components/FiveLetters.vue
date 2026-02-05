@@ -249,6 +249,10 @@ const showMessage = (text) => {
     border-radius: 6px;
     border: 1px solid darkgrey;
 
+    &:focus {
+      outline: none;
+    }
+
     &_correct {
       background-color: green;
       color: white;
